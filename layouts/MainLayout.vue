@@ -38,10 +38,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "MainLayout"
-}
+<script setup>
+import { useUserStore } from '~/stores/user';
+const userStore = useUserStore()
+
+const client = useSupabaseClient()
+const user = useSupabaseUser()
 </script>
 
 <style scoped>
