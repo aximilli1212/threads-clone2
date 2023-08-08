@@ -1,12 +1,12 @@
 <template>
-  <div>
-    Index page here: >>
-  </div>
+ <MainLayout />
 </template>
 
 <script>
+import MainLayout from "../layouts/MainLayout";
 export default {
-  name: "index"
+  name: "index",
+  components: {MainLayout}
 }
 </script>
 
