@@ -5,11 +5,8 @@
                 <img class="w-[35px]" src="/threads-logo.png">
                 <span class="font-bold text-2xl text-white">Threads</span>
             </div>
-
             <div class="max-w-[350px] mx-auto px-2 text-white">
-
                 <div class="text-center mb-6 mt-4">Login / Register</div>
-
                 <button 
                     @click="login('github')"
                     class="
@@ -41,6 +38,7 @@ const client = useSupabaseClient()
 const user = useSupabaseUser()
 
 watchEffect(() => {
+  console.log({user: user.value})
     if (user.value) {
         return navigateTo('/')
     }

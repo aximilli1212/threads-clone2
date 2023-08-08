@@ -5,7 +5,7 @@
         <div id="Posts" class="px-4 max-w-[600px] mx-auto" >
 
           <div v-if="isPosts" v-for="post in posts" :key="post">
-            <Post :post="post" @isDeleted="posts = []" />
+            <Post :post="post" @isDeleted="posts = userStore.getAllPosts()" />
           </div>
           <div v-else>
             <client-only>
@@ -35,17 +35,17 @@ import MainLayout from '~/layouts/MainLayout.vue';
 
 import { useUserStore } from '../stores/user';
 const userStore = useUserStore()
-// const user = useSupabaseUser()
+const user = useSupabaseUser()
 
 let posts = ref([])
 let isPosts = ref(false)
 let isLoading = ref(false)
-//
-// watchEffect(() => {
-//   if (!user.value) {
-//     return navigateTo('/auth')
-//   }
-// })
+
+watchEffect(() => {
+  if (!user.value) {
+    return navigateTo('/auth')
+  }
+})
 
 onBeforeMount(async () => {
   try {

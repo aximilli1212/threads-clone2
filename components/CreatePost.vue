@@ -85,8 +85,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useUserStore } from '~/stores/user';
 const userStore = useUserStore()
 
-// const client = useSupabaseClient()
-// const user = useSupabaseUser()
+const client = useSupabaseClient()
+const user = useSupabaseUser()
 
 let text = ref(null)
 let isLoading = ref(false)
@@ -122,7 +122,7 @@ const createPost = async () => {
   if (fileData.value) {
     const { data, error } = await client
         .storage
-        .from('threads-c-files')
+        .from('threads-clone-files')
         .upload(`${uuidv4()}.jpg`, fileData.value)
 
     dataOut = data;
@@ -132,6 +132,8 @@ const createPost = async () => {
   if (errorOut) {
     console.log(errorOut)
     return errorOut
+    isLoading.value = false
+
   }
 
   let pic = ''
