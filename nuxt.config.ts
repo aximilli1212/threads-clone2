@@ -5,13 +5,13 @@ export default defineNuxtConfig({
   modules: [
     'nuxt-icon',
     '@nuxtjs/tailwindcss',
-    // '@nuxtjs/supabase',
+    '@nuxtjs/supabase',
     '@pinia/nuxt',
     "@vite-pwa/nuxt",
   ],
   runtimeConfig: {
     public: {
-      // bucketUrl: process.env.BUCKET_URL
+      bucketUrl: process.env.BUCKET_URL
     }
   },
   devtools: { enabled: false },
