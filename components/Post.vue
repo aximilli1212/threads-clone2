@@ -7,7 +7,7 @@
           <div class="ml-2 font-semibold text-[18px]">{{ post.name }}</div>
         </div>
         <div
-            v-if="user && user.identities && user.identities[0].user_id == post.userId"
+            v-if="user && user.identities && user.identities[0].user_id === post.userId"
             @click="isMenu = !isMenu" class="relative"
         >
           <button
@@ -106,11 +106,11 @@ let isDeleting = ref(false)
 const emit = defineEmits(['isDeleted'])
 const props = defineProps({ post: Object })
 
-// const client = useSupabaseClient()
-// const user = useSupabaseUser()
+const client = useSupabaseClient()
+const user = useSupabaseUser()
 
 const hasLikedComputed = computed(() => {
-  // if (!user.value) return
+  if (!user.value) return
   let res = false
   props.post.likes.forEach(like => {
     if (like.userId === user.value.identities[0].user_id && like.postId === props.post.id) {
